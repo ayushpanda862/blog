@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration: none; color: #000" href="index.html"
+            >Home</a
+          >
+        </button>
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration: none; color: #000" href="posts.html"
+            >Posts</a
+          >
+        </button>
+        <button class="navbaritem itemborder2">
+          <a
+            id="loginbutton"
+            style="text-decoration: none; color: #000"
+            href="login.html"
+            >Login</a
+          >
+        </button>
+      </div>
+      <div class="postspage">
+        <div id="projectcontainer" class="projectcontainer">
+        </div>
+      </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+      let posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+      const projectcontainer = document.getElementById("projectcontainer");
+
+      posts.forEach(post => {
+        const projectbox = document.createElement("div");
+        projectbox.setAttribute("class", "projectbox");
+        projectcontainer.appendChild(projectbox);
+
+        const aboutcontainer = document.createElement("div");
+        aboutcontainer.setAttribute("class", "aboutcontainer");
+        projectbox.appendChild(aboutcontainer);
+
+        const aboutproject = document.createElement("div");
+        aboutproject.setAttribute("class", "aboutproject");
+        aboutcontainer.appendChild(aboutproject);
+
+        const h1 = document.createElement("h1");
+        h1.innerText = post.title;
+        aboutproject.appendChild(h1);
+
+        const p = document.createElement("p");
+        p.innerText = post.content;
+        aboutproject.appendChild(p);
+      });
+    });
+
+    </script>
+  </body>
+  <script src="script.js"></script>
+
+</html>

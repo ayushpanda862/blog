@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Posts</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration: none; color: #000" href="index.html"
+            >Home</a
+          >
+        </button>
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration: none; color: #000" href="posts.html"
+            >Posts</a
+          >
+        </button>
+        <button class="navbaritem itemborder2">
+          <a
+            id="loginbutton"
+            style="text-decoration: none; color: #000"
+            href="login.html"
+            >Login</a
+          >
+        </button>
+      </div>
+      <div class="adminpage">
+        <div class="inputcontainer">
+          <input id="title" autocomplete="off" placeholder="Your Post Title" />
+          <textarea
+            id="postcontent"
+            autocomplete="off"
+            placeholder="Your Post Content"
+          ></textarea>
+        </div>
+        <button id="submitbutton">Publish</button>
+        <button id="deletebutton">Delete All Posts</button>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("submitbutton")
+        .addEventListener("click", function () {
+          const title = document.getElementById("title").value;
+          const content = document.getElementById("postcontent").value;
+
+          if (title && content) {
+            let posts = JSON.parse(localStorage.getItem("posts")) || [];
+            posts.push({ title, content });
+            localStorage.setItem("posts", JSON.stringify(posts));
+
+            // Redirect to posts page after submission
+            window.location.href = "posts.html";
+          } else {
+            alert("Please fill in both fields.");
+          }
+        });
+
+      document
+        .getElementById("deletebutton")
+        .addEventListener("click", function () {
+          let confirm = prompt("Are you Sure?");
+
+          if (confirm.toLowerCase() === "yes") {
+            localStorage.clear()
+            window.location.href = "posts.html";
+          }
+          }
+        );
+    </script>
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration:none; color: #000;" href="index.html">Home</a>
+        </button>
+        <button class="navbaritem itemborder1">
+          <a style="text-decoration:none; color: #000;" href="posts.html">Posts</a>
+        </button>
+        <button class="navbaritem itemborder2">
+          <a style="text-decoration:none; color: #000;" href="login.html">Login</a>
+        </button>
+      </div>
+      <div class="loginpage">
+        <h1>Please enter the password to create new posts</h1>
+        <input id="password" autocomplete="off">
+      </div>
+    </div>
+    <script>
+        document.getElementById("password").addEventListener("keypress", function (e) {
+            if (event.key === "Enter") {
+                console.log(document.getElementById("password").value)
+                if (document.getElementById("password").value == "1320") {
+                    window.location.href = 'adminpanel.html';
+                    password.value = null;
+                } else {
+                    alert("Incorrect Password");
+                    password.value = null;
+                }
+
+            }
+
+        });
+    </script>
+  </body>
+  <script src="script.js"></script>
+</html>
